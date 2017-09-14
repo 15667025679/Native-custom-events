@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .wrap {
+            width: 200px;
+            height: 200px;
+            background-color: antiquewhite;
+            margin: 20px;
+            text-align: center;
+            line-height: 200px;
+        }
+    </style>
+</head>
+<body>
+<div class="wrap"></div>
+<script>
+    "use strict";
+    var a = document.querySelector(".wrap");
+    var ev = new Event("test",{
+        bubbles:"true",//可选参数，Boolean类型，默认为false，表示该事件是否支持冒泡
+        cancelable:"true"//可选参数，Boolean类型，默认为false，表示改事件是否能被取消
+    });
+    a.addEventListener("test",function (event) {
+        console.log(event.bubbles);
+        console.log(event.cancelable);
+    });
+    a.dispatchEvent(ev);
+</script>
+</body>
+</html>

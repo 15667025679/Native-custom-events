@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-CN">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title></title>
+    <style>
+        .button {
+            width: 200px;
+            height: 200px;
+            background-color: antiquewhite;
+            margin: 20px;
+            text-align: center;
+            line-height: 200px;
+        }
+    </style>
+</head>
+<body>
+<div class="button">Button</div>
+
+<script>
+    var btn = document.querySelector('.button');
+
+    var ev = new CustomEvent('test', {
+        bubbles: 'true',//可选参数，Boolean类型，默认为false，表示事件是否支持冒泡
+        cancelable: 'true',//可选参数，Boolean类型，默认为false，表示事件能否取消
+        detail: {
+            name:"张三",
+            age:19
+        }//自定义的数据，Event方法不支持
+    });
+    btn.addEventListener('test', function (event) {
+        console.log(event.bubbles);
+        console.log(event.cancelable);
+        console.log(event.detail);
+    }, false);
+    btn.dispatchEvent(ev);
+</script>
+</body>
+</html>
+
